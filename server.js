@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: ["http://localhost:8081"],
+        origin: ["https://application-web-tp2.herokuapp.com/"],
         methods: ["GET", "POST", "DELETE"],
         credentials: true,
     })
@@ -244,7 +244,8 @@ app.delete('/deleteEvent', (req, res) => {
     res.status(200).end();
 });
 
-var server = app.listen(8081, function () {
+const port = process.env.PORT || 8081;
+var server = app.listen(port, function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log("Example app listening at http://%s:%s", host, port);
