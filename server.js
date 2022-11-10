@@ -89,32 +89,6 @@ conn.connect((err) => {
         if (err) throw err;
         console.log("Table event created");
     });
-
-    //Add user for tests
-    conn.query(
-        "INSERT INTO user (username, password) VALUES ('gabriel'," +
-        "'$2b$10$v1l/stAAXFQEbquFJ3Aj8O6vW51KU8wLaeYMPChP7hrN1XRVDTCDa')",
-        (err, results) => {
-            if (err) throw err;
-        }
-    );
-
-    // Add events for tests
-    for (let i = 1; i < 10; i++) {
-        var sql = "INSERT INTO event (title, date, userId) VALUES ('test', '2022-09-10', " + 1 + ");"
-
-        if (i == 1 || i == 2) {
-            for (let j = 0; j < 3; j++) {
-                conn.query(sql, (err, results) => {
-                    if (err) throw err;
-                });
-            }
-        } else {
-            conn.query(sql, (err, results) => {
-                if (err) throw err;
-            });
-        }
-    }
 });
 
 app.post('/register', (req, res) => {
